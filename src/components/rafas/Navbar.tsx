@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { CATEGORIAS, CATEGORIAS_POR_USO, getCategoria } from "@/lib/catalogo";
-import logo from "@/assets/rafas-logo.avif.asset.json";
+import logo from "@/assets/rafas-logo.asset.json";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
