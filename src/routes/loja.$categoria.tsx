@@ -59,7 +59,7 @@ function CategoriaPage() {
 
       {categoria.subcategorias && (
         <div className="mt-10 flex flex-wrap gap-2">
-          {categoria.subcategorias.map((s) => (
+          {categoria.subcategorias.map((s: { slug: string; nome: string }) => (
             <Link
               key={s.slug}
               to="/loja/componentes/$sub"
