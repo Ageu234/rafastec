@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ProcessoRouteImport } from './routes/processo'
+import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LojaIndexRouteImport } from './routes/loja.index'
 import { Route as ProdutoHandleRouteImport } from './routes/produto.$handle'
@@ -25,6 +26,11 @@ const SobreRoute = SobreRouteImport.update({
 const ProcessoRoute = ProcessoRouteImport.update({
   id: '/processo',
   path: '/processo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,6 +61,7 @@ const LojaComponentesSubRoute = LojaComponentesSubRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
   '/processo': typeof ProcessoRoute
   '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
   '/processo': typeof ProcessoRoute
   '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/contacto': typeof ContactoRoute
   '/processo': typeof ProcessoRoute
   '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/contacto'
     | '/processo'
     | '/sobre'
     | '/loja/$categoria'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/contacto'
     | '/processo'
     | '/sobre'
     | '/loja/$categoria'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/contacto'
     | '/processo'
     | '/sobre'
     | '/loja/$categoria'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ContactoRoute: typeof ContactoRoute
   ProcessoRoute: typeof ProcessoRoute
   SobreRoute: typeof SobreRoute
   LojaCategoriaRoute: typeof LojaCategoriaRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/processo'
       fullPath: '/processo'
       preLoaderRoute: typeof ProcessoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ContactoRoute: ContactoRoute,
   ProcessoRoute: ProcessoRoute,
   SobreRoute: SobreRoute,
   LojaCategoriaRoute: LojaCategoriaRoute,
@@ -187,3 +208,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
