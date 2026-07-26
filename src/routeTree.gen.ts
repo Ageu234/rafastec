@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LojaIndexRouteImport } from './routes/loja.index'
 import { Route as ProdutoHandleRouteImport } from './routes/produto.$handle'
 import { Route as LojaCategoriaRouteImport } from './routes/loja.$categoria'
 import { Route as LojaComponentesSubRouteImport } from './routes/loja.componentes.$sub'
 
+const SobreRoute = SobreRouteImport.update({
+  id: '/sobre',
+  path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,6 +49,7 @@ const LojaComponentesSubRoute = LojaComponentesSubRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
   '/produto/$handle': typeof ProdutoHandleRoute
   '/loja/': typeof LojaIndexRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
   '/produto/$handle': typeof ProdutoHandleRoute
   '/loja': typeof LojaIndexRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/sobre': typeof SobreRoute
   '/loja/$categoria': typeof LojaCategoriaRoute
   '/produto/$handle': typeof ProdutoHandleRoute
   '/loja/': typeof LojaIndexRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/sobre'
     | '/loja/$categoria'
     | '/produto/$handle'
     | '/loja/'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/sobre'
     | '/loja/$categoria'
     | '/produto/$handle'
     | '/loja'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/sobre'
     | '/loja/$categoria'
     | '/produto/$handle'
     | '/loja/'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SobreRoute: typeof SobreRoute
   LojaCategoriaRoute: typeof LojaCategoriaRoute
   ProdutoHandleRoute: typeof ProdutoHandleRoute
   LojaIndexRoute: typeof LojaIndexRoute
@@ -97,6 +110,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sobre': {
+      id: '/sobre'
+      path: '/sobre'
+      fullPath: '/sobre'
+      preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SobreRoute: SobreRoute,
   LojaCategoriaRoute: LojaCategoriaRoute,
   ProdutoHandleRoute: ProdutoHandleRoute,
   LojaIndexRoute: LojaIndexRoute,
