@@ -42,6 +42,20 @@ function ProdutoPage() {
     queryFn: () => fetchProductByHandle(handle),
   });
 
+  useEffect(() => {
+    const node = product?.node;
+    if (!node) return;
+    const v = node.variants?.edges?.[0]?.node;
+    const money = v?.price ?? node.priceRange.minVariantPrice;
+    trackViewItem({
+      id: v?.id ?? node.id,
+      name: node.title,
+      price: parseFloat(money.amount),
+      currency: money.currencyCode,
+      category: node.productType,
+    });
+  }, [product]);
+
   if (isLoading) {
     return (
       <div className="container-rafas section-y">
