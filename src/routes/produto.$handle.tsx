@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { fetchProductByHandle, formatMoney } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { trackAddToCart, trackViewItem } from "@/lib/analytics";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/produto/$handle")({
   head: ({ params }) => ({

@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { formatMoney } from "@/lib/shopify";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 export function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
