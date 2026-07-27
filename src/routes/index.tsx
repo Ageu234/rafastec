@@ -16,11 +16,11 @@ export const Route = createFileRoute("/")({
         content:
           "Workstations, sistemas gaming e máquinas de IA especificadas, montadas e validadas à mão em Luanda. Engineered for Performance.",
       },
-      { property: "og:title", content: "RAFAS — Engineered for Performance" },
+      { property: "og:title", content: "RAFAS — Hardware de alta performance em Angola" },
       {
         property: "og:description",
         content:
-          "Boutique de engenharia de hardware em Angola. Máquinas configuradas ao milímetro, validadas com dados reais.",
+          "Workstations, sistemas gaming e máquinas de IA especificadas, montadas e validadas à mão em Luanda. Engineered for Performance.",
       },
       { property: "og:url", content: "/" },
     ],
