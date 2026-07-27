@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { fetchProductByHandle, formatMoney } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { trackAddToCart, trackViewItem } from "@/lib/analytics";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/produto/$handle")({
   head: ({ params }) => ({
@@ -39,6 +41,20 @@ function ProdutoPage() {
     queryKey: ["produto", handle],
     queryFn: () => fetchProductByHandle(handle),
   });
+
+  useEffect(() => {
+    const node = product?.node;
+    if (!node) return;
+    const v = node.variants?.edges?.[0]?.node;
+    const money = v?.price ?? node.priceRange.minVariantPrice;
+    trackViewItem({
+      id: v?.id ?? node.id,
+      name: node.title,
+      price: parseFloat(money.amount),
+      currency: money.currencyCode,
+      category: node.productType,
+    });
+  }, [product]);
 
   if (isLoading) {
     return (
@@ -83,6 +99,14 @@ function ProdutoPage() {
       price: variant.price,
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
+    });
+    trackAddToCart({
+      id: variant.id,
+      name: p.title,
+      price: parseFloat(variant.price.amount),
+      currency: variant.price.currencyCode,
+      quantity: 1,
+      category: p.productType,
     });
     toast.success("Adicionado ao carrinho", { description: p.title, position: "top-center" });
   };

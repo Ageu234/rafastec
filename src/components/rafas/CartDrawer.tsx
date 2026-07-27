@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { formatMoney } from "@/lib/shopify";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 export function CartDrawer() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +26,17 @@ export function CartDrawer() {
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
+      trackBeginCheckout(
+        totalPrice,
+        currency,
+        items.map((i) => ({
+          id: i.variantId,
+          name: i.product.node.title,
+          price: parseFloat(i.price.amount),
+          currency: i.price.currencyCode,
+          quantity: i.quantity,
+        })),
+      );
       window.open(checkoutUrl, "_blank");
       setIsOpen(false);
     }

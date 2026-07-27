@@ -15,6 +15,7 @@ import { Navbar } from "@/components/rafas/Navbar";
 import { Footer } from "@/components/rafas/Footer";
 import { Toaster } from "@/components/ui/sonner";
 import { useCartSync } from "@/hooks/useCartSync";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 function NotFoundComponent() {
   return (
@@ -142,6 +143,7 @@ function RootComponent() {
 
 function AppShell() {
   useCartSync();
+  useAnalytics();
 
   return (
     <div className="flex min-h-screen flex-col">
