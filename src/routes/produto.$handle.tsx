@@ -100,6 +100,14 @@ function ProdutoPage() {
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
     });
+    trackAddToCart({
+      id: variant.id,
+      name: p.title,
+      price: parseFloat(variant.price.amount),
+      currency: variant.price.currencyCode,
+      quantity: 1,
+      category: p.productType,
+    });
     toast.success("Adicionado ao carrinho", { description: p.title, position: "top-center" });
   };
 
