@@ -26,6 +26,17 @@ export function CartDrawer() {
   const handleCheckout = () => {
     const checkoutUrl = getCheckoutUrl();
     if (checkoutUrl) {
+      trackBeginCheckout(
+        totalPrice,
+        currency,
+        items.map((i) => ({
+          id: i.variantId,
+          name: i.product.node.title,
+          price: parseFloat(i.price.amount),
+          currency: i.price.currencyCode,
+          quantity: i.quantity,
+        })),
+      );
       window.open(checkoutUrl, "_blank");
       setIsOpen(false);
     }
