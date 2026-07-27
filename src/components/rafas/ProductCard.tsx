@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { formatMoney, type ShopifyProduct } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { trackAddToCart } from "@/lib/analytics";
 
 export function ProductCard({ product }: { product: ShopifyProduct }) {
   const addItem = useCartStore((s) => s.addItem);
@@ -23,6 +24,14 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
       price: variant.price,
       quantity: 1,
       selectedOptions: variant.selectedOptions || [],
+    });
+    trackAddToCart({
+      id: variant.id,
+      name: p.title,
+      price: parseFloat(variant.price.amount),
+      currency: variant.price.currencyCode,
+      quantity: 1,
+      category: p.productType,
     });
     toast.success("Adicionado ao carrinho", { description: p.title, position: "top-center" });
   };
