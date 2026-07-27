@@ -92,12 +92,21 @@ function Index() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-graphite-light">
+        <img
+          src={founder.url}
+          alt="Fundador da RAFAS na bancada de montagem"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/85 to-obsidian/40"
+        />
         <div
           aria-hidden
           className="absolute inset-0 bg-[radial-gradient(1000px_500px_at_70%_-10%,rgba(10,95,255,0.18),transparent_70%)]"
         />
-        <div className="container-rafas relative grid gap-16 py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:py-32">
-          <div>
+        <div className="container-rafas relative flex min-h-[70vh] flex-col justify-center py-24 lg:min-h-[80vh] lg:py-32">
+          <div className="max-w-2xl">
             <p className="eyebrow reveal-line">Luanda · Angola</p>
             <h1 className="reveal-line mt-6 text-[clamp(2.75rem,6vw,4.75rem)] font-semibold leading-[1.03] tracking-[-0.03em]">
               Engenharia,
@@ -120,24 +129,9 @@ function Index() {
               </Button>
             </div>
           </div>
-
-          <div className="relative">
-            <div className="overflow-hidden rounded-[24px] border border-graphite-light bg-graphite">
-              <img
-                src={founder.url}
-                alt="Fundador da RAFAS na bancada de montagem"
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-6 left-6 right-6 rounded-[16px] border border-graphite-light bg-obsidian/90 p-5 backdrop-blur-xl">
-              <p className="font-mono text-[11px] tracking-widest text-electric">VALIDADO EM BANCADA</p>
-              <p className="mt-2 text-[14px] text-titanium-dark">
-                Cada sistema sai daqui com relatório térmico e benchmarks assinados.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
+
 
       {/* Trust bar */}
       <section className="border-b border-graphite-light bg-graphite/40">
