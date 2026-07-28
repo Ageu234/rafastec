@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS } from "@/lib/catalogo";
+import { PageHero } from "@/components/rafas/PageHero";
 
 export const Route = createFileRoute("/loja/")({
   head: () => ({
@@ -58,9 +59,11 @@ function Loja() {
         ))}
       </div>
 
-      <div className="mt-12">
-        <ProductGrid products={produtos} isLoading={isLoading} />
+        <div className="mt-12">
+          <ProductGrid products={produtos} isLoading={isLoading} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
