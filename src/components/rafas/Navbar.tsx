@@ -86,7 +86,15 @@ export function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <Link to="/" className="col-start-2 flex items-center justify-center">
+          <img
+            src={wordmark.url}
+            alt="RAFAS Gaming"
+            className="h-9 w-auto mix-blend-screen md:h-11"
+          />
+        </Link>
+
+        <div className="col-start-3 flex items-center justify-end gap-2">
           <CartDrawer />
           <button
             aria-label="Menu"
@@ -96,6 +104,7 @@ export function Navbar() {
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+
       </div>
 
       {mobileOpen && (
