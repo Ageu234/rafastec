@@ -106,7 +106,6 @@ function Contacto() {
         </form>
       </div>
     </section>
-    </section>
     </>
   );
 }
