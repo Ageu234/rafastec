@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import founder from "@/assets/rafas-founder.asset.json";
+import { PageHero } from "@/components/rafas/PageHero";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
@@ -35,15 +36,16 @@ const VALORES = [
 function Sobre() {
   return (
     <>
+      <PageHero title="Conheça a RAFAS" crumbs={[{ label: "Sobre" }]} />
       <section className="section-y border-b border-graphite-light">
         <div className="container-rafas grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
             <p className="eyebrow">Sobre</p>
-            <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
+            <h2 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
               Uma boutique de engenharia,
               <br />
               feita em Luanda.
-            </h1>
+            </h2>
             <p className="mt-7 max-w-xl text-[16px] leading-relaxed text-titanium-dark">
               A RAFAS nasceu de uma frustração simples: em Angola, quem precisava de uma máquina
               séria acabava sempre a aceitar aproximações — peças mal combinadas, promessas sem

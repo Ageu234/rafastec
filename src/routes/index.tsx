@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
-import founder from "@/assets/rafas-founder.asset.json";
+import heroImg from "@/assets/rafas-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -93,13 +93,13 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-graphite-light">
         <img
-          src={founder.url}
-          alt="Fundador da RAFAS na bancada de montagem"
-          className="absolute inset-0 h-full w-full object-cover"
+          src={heroImg.url}
+          alt="Fundador da RAFAS ao lado de um sistema montado à mão"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/85 to-obsidian/40"
+          className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/85 to-obsidian/25"
         />
         <div
           aria-hidden
@@ -147,6 +147,27 @@ function Index() {
           ))}
         </div>
       </section>
+
+      {/* Marcas parceiras */}
+      <section className="border-b border-graphite-light">
+        <div className="container-rafas py-12">
+          <p className="text-center text-[13px] text-titanium-dark">
+            Trabalhamos com componentes das marcas em que confiamos
+          </p>
+          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+            {["INTEL", "AMD", "NVIDIA", "ASUS", "CORSAIR", "SAMSUNG", "MSI"].map((m) => (
+              <li
+                key={m}
+                className="font-mono text-[15px] tracking-[0.18em] text-titanium-dark/70 transition-colors hover:text-titanium"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+
 
       {/* Categorias por uso */}
       <section className="section-y border-b border-graphite-light">

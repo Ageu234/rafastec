@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { CATEGORIAS, CATEGORIAS_POR_USO, getCategoria } from "@/lib/catalogo";
-import logo from "@/assets/rafas-logo.asset.json";
+import wordmark from "@/assets/rafas-wordmark.jpg.asset.json";
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,12 +11,7 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-graphite-light/60 bg-obsidian/80 backdrop-blur-xl">
-      <div className="container-rafas flex h-16 items-center justify-between gap-6">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo.url} alt="RAFAS" className="h-7 w-auto" />
-          <span className="sr-only">RAFAS</span>
-        </Link>
-
+      <div className="container-rafas grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4">
         <nav className="hidden items-center gap-8 lg:flex">
           <div className="group relative">
             <button className="flex items-center gap-1 py-5 text-[14px] text-titanium transition-colors hover:text-electric">
@@ -91,7 +86,15 @@ export function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2">
+        <Link to="/" className="col-start-2 flex items-center justify-center">
+          <img
+            src={wordmark.url}
+            alt="RAFAS Gaming"
+            className="h-12 w-auto mix-blend-screen md:h-16"
+          />
+        </Link>
+
+        <div className="col-start-3 flex items-center justify-end gap-2">
           <CartDrawer />
           <button
             aria-label="Menu"
@@ -101,6 +104,7 @@ export function Navbar() {
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+
       </div>
 
       {mobileOpen && (

@@ -110,7 +110,7 @@ export function ProductGrid({
   if (products.length === 0) {
     return (
       <div className="rounded-[16px] border border-dashed border-graphite-light px-6 py-20 text-center">
-        <p className="text-[18px] font-semibold">No products found</p>
+        <p className="text-[18px] font-semibold">Ainda sem produtos</p>
         <p className="mx-auto mt-2 max-w-md text-[13px] text-titanium-dark">
           Ainda não existem produtos nesta secção. Diga no chat qual é o produto e o preço para o
           criarmos na sua loja Shopify.

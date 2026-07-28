@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS } from "@/lib/catalogo";
+import { PageHero } from "@/components/rafas/PageHero";
 
 export const Route = createFileRoute("/loja/")({
   head: () => ({
@@ -32,19 +33,18 @@ function Loja() {
   });
 
   return (
-    <div className="container-rafas section-y">
-      <nav className="font-mono text-[12px] text-titanium-dark">
-        <Link to="/" className="hover:text-electric">
-          Início
-        </Link>{" "}
-        / Loja
-      </nav>
+    <>
+      <PageHero title="Loja RAFAS" crumbs={[{ label: "Loja" }]} />
+      <div className="container-rafas section-y">
+        <p className="eyebrow">Catálogo</p>
+        <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+          Máquinas e componentes
+        </h2>
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-titanium-dark">
+          Máquinas completas e componentes individuais. Todos os preços em Kwanza, com validação
+          técnica incluída.
+        </p>
 
-      <h1 className="mt-5 text-[clamp(2rem,4vw,3rem)] font-semibold tracking-[-0.02em]">Catálogo</h1>
-      <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-titanium-dark">
-        Máquinas completas e componentes individuais. Todos os preços em Kwanza, com validação
-        técnica incluída.
-      </p>
 
       <div className="mt-10 flex flex-wrap gap-2">
         {CATEGORIAS.map((c) => (
@@ -59,9 +59,11 @@ function Loja() {
         ))}
       </div>
 
-      <div className="mt-12">
-        <ProductGrid products={produtos} isLoading={isLoading} />
+        <div className="mt-12">
+          <ProductGrid products={produtos} isLoading={isLoading} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
+
