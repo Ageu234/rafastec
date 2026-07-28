@@ -14,7 +14,7 @@ export function Navbar() {
       <div className="container-rafas grid h-[92px] grid-cols-[1fr_auto_1fr] items-center gap-4">
         <nav className="hidden items-center gap-8 lg:flex">
           <div className="group relative">
-            <button className="flex items-center gap-1 py-5 text-[15px] font-semibold text-electric transition-colors hover:text-electric-light">
+            <button className="flex items-center gap-1 py-5 text-[15px] font-semibold text-electric transition-colors hover:opacity-80">
               Loja <ChevronDown className="h-4 w-4" />
             </button>
             <div className="pointer-events-none absolute left-1/2 top-full w-[820px] -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
