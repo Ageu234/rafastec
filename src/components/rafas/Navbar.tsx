@@ -90,7 +90,7 @@ export function Navbar() {
           <img
             src={wordmark.url}
             alt="RAFAS Gaming"
-            className="h-9 w-auto mix-blend-screen md:h-11"
+            className="h-12 w-auto mix-blend-screen md:h-16"
           />
         </Link>
 
