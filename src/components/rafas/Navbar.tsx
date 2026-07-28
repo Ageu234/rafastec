@@ -11,10 +11,10 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-graphite-light/60 bg-obsidian/80 backdrop-blur-xl">
-      <div className="container-rafas grid h-[72px] grid-cols-[1fr_auto_1fr] items-center gap-4">
+      <div className="container-rafas grid h-[92px] grid-cols-[1fr_auto_1fr] items-center gap-4">
         <nav className="hidden items-center gap-8 lg:flex">
           <div className="group relative">
-            <button className="flex items-center gap-1 py-5 text-[14px] text-titanium transition-colors hover:text-electric">
+            <button className="flex items-center gap-1 py-5 text-[15px] font-semibold text-electric transition-colors hover:text-electric-light">
               Loja <ChevronDown className="h-4 w-4" />
             </button>
             <div className="pointer-events-none absolute left-1/2 top-full w-[820px] -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover:pointer-events-auto group-hover:opacity-100">
@@ -75,13 +75,13 @@ export function Navbar() {
             </div>
           </div>
 
-          <Link to="/processo" className="text-[14px] text-titanium hover:text-electric">
+          <Link to="/processo" className="text-[15px] font-semibold text-titanium hover:text-electric">
             Processo
           </Link>
-          <Link to="/sobre" className="text-[14px] text-titanium hover:text-electric">
+          <Link to="/sobre" className="text-[15px] font-semibold text-titanium hover:text-electric">
             Sobre
           </Link>
-          <Link to="/contacto" className="text-[14px] text-titanium hover:text-electric">
+          <Link to="/contacto" className="text-[15px] font-semibold text-titanium hover:text-electric">
             Contacto
           </Link>
         </nav>
@@ -90,7 +90,7 @@ export function Navbar() {
           <img
             src={wordmark.url}
             alt="RAFAS Gaming"
-            className="h-12 w-auto mix-blend-screen md:h-16"
+            className="h-14 w-auto mix-blend-screen md:h-[74px]"
           />
         </Link>
 
