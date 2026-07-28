@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
+import { PageHero } from "@/components/rafas/PageHero";
 
 export const Route = createFileRoute("/processo")({
   head: () => ({
@@ -56,12 +57,13 @@ const ETAPAS = [
 function Processo() {
   return (
     <>
+      <PageHero title="O processo RAFAS" crumbs={[{ label: "Processo" }]} />
       <section className="section-y border-b border-graphite-light">
         <div className="container-rafas max-w-3xl">
           <p className="eyebrow">Processo</p>
-          <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
+          <h2 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
             Da conversa à bancada, sem improviso.
-          </h1>
+          </h2>
           <p className="mt-7 text-[16px] leading-relaxed text-titanium-dark">
             Nenhuma máquina RAFAS sai da oficina sem passar por estas quatro etapas. É isto que
             separa engenharia de montagem.

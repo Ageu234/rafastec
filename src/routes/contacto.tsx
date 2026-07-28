@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { PageHero } from "@/components/rafas/PageHero";
 
 export const Route = createFileRoute("/contacto")({
   head: () => ({
@@ -38,13 +39,15 @@ function Contacto() {
   };
 
   return (
+    <>
+      <PageHero title="Fale com a RAFAS" crumbs={[{ label: "Contacto" }]} />
     <section className="section-y">
       <div className="container-rafas grid gap-16 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="eyebrow">Contacto</p>
-          <h1 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
+          <h2 className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
             Diga-nos o que precisa de correr.
-          </h1>
+          </h2>
           <p className="mt-7 max-w-md text-[16px] leading-relaxed text-titanium-dark">
             Descreva o trabalho que a máquina vai fazer. Respondemos com uma proposta técnica
             fundamentada — sem compromisso.
@@ -103,5 +106,7 @@ function Contacto() {
         </form>
       </div>
     </section>
+    </section>
+    </>
   );
 }
