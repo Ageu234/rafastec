@@ -6,6 +6,8 @@ import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg.asset.json";
+import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -305,16 +307,8 @@ function Index() {
               Antes de decidir.
             </h2>
           </div>
-          <dl className="divide-y divide-graphite-light border-y border-graphite-light">
-            {FAQ.map((f) => (
-              <div key={f.q} className="py-6">
-                <dt className="text-[16px] font-medium">{f.q}</dt>
-                <dd className="mt-2 max-w-2xl text-[14px] leading-relaxed text-titanium-dark">
-                  {f.a}
-                </dd>
-              </div>
-            ))}
-          </dl>
+          <FaqAccordion items={FAQ} />
+
         </div>
       </section>
 
