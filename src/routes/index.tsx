@@ -6,6 +6,8 @@ import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg.asset.json";
+import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
