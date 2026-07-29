@@ -289,10 +289,17 @@ function Index() {
                 className="group flex flex-col justify-between rounded-[16px] border border-graphite-light bg-graphite p-8 transition-colors hover:border-electric"
               >
                 <div>
-                  <span className="font-mono text-[12px] text-titanium-dark">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-4 text-[24px] font-semibold">{c.nome}</h3>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-[12px] border border-graphite-light bg-obsidian text-electric transition-colors group-hover:border-electric">
+                      {(() => {
+                        const Icon = [Gamepad2, MonitorCog, BrainCircuit][i] ?? Cpu;
+                        return <Icon className="h-5 w-5" />;
+                      })()}
+                    </span>
+                    <span className="font-mono text-[12px] text-titanium-dark">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-5 text-[24px] font-semibold">{c.nome}</h3>
+
                   <p className="mt-3 text-[14px] leading-relaxed text-titanium-dark">
                     {c.descricao}
                   </p>
