@@ -170,6 +170,84 @@ function Index() {
       </section>
 
 
+      {/* Feito para si */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative">
+            <div className="overflow-hidden rounded-[20px] border border-graphite-light">
+              <img
+                src={team1.url}
+                alt="Técnico da RAFAS Gaming ao lado de um PC montado à mão"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-2 hidden rounded-[16px] border border-graphite-light bg-graphite px-6 py-5 sm:block">
+              <p className="font-mono text-[22px] font-medium text-electric">+300</p>
+              <p className="text-[13px] text-titanium-dark">sistemas entregues</p>
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow">Feito para si</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold leading-tight tracking-[-0.02em]">
+              A máquina é sua. A engenharia é nossa.
+            </h2>
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-titanium-dark">
+              Cada build RAFAS começa numa conversa e termina numa bancada de testes. Escolhe o uso,
+              nós escolhemos as peças, montamos à mão e entregamos com relatório técnico.
+            </p>
+            <ul className="mt-9 grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: Cpu, t: "Especificação sob medida" },
+                { icon: Wrench, t: "Montagem manual e cablagem limpa" },
+                { icon: Gauge, t: "48h de burn-in antes da entrega" },
+                { icon: ShieldCheck, t: "Garantia local de 24 meses" },
+              ].map(({ icon: Icon, t }) => (
+                <li key={t} className="flex items-start gap-3 rounded-[12px] border border-graphite-light bg-graphite p-4">
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-electric" />
+                  <span className="text-[14px] leading-snug text-titanium">{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/loja">Montar a minha máquina</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon className="mr-2 h-4 w-4" /> Falar no WhatsApp
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Porquê escolher a RAFAS */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Porquê a RAFAS</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold leading-tight tracking-[-0.02em]">
+              Porquê escolher a RAFAS Gaming?
+            </h2>
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-titanium-dark">
+              Quatro razões pelas quais os nossos clientes em Luanda não voltam a comprar às cegas.
+            </p>
+            <div className="mt-9">
+              <FaqAccordion items={PORQUE} />
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-[20px] border border-graphite-light">
+            <img
+              src={team2.url}
+              alt="Montagem de um PC gaming branco na bancada da RAFAS Gaming"
+              className="aspect-[4/5] w-full object-cover lg:aspect-[4/4.4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Categorias por uso */}
       <section className="section-y border-b border-graphite-light">
