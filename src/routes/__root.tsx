@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/rafas/Navbar";
 import { Footer } from "@/components/rafas/Footer";
+import { WhatsAppButton } from "@/components/rafas/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
 import { useCartSync } from "@/hooks/useCartSync";
 import { useAnalytics } from "@/hooks/useAnalytics";
@@ -161,6 +162,7 @@ function AppShell() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
       <Toaster />
     </div>
   );

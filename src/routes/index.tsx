@@ -1,12 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, ShieldCheck, Cpu, Wrench, Gauge, PackageCheck, HeadphonesIcon } from "lucide-react";
+import { ArrowRight, ShieldCheck, Cpu, Wrench, Gauge, PackageCheck, HeadphonesIcon, Gamepad2, MonitorCog, BrainCircuit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg.asset.json";
+import team1 from "@/assets/rafas-team-1.jpg.asset.json";
+import team2 from "@/assets/rafas-team-2.jpg.asset.json";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 
 
 export const Route = createFileRoute("/")({
@@ -83,6 +86,26 @@ const FAQ = [
     a: "Sim, com embalagem reforçada específica para transporte de sistemas montados. O prazo é confirmado no checkout.",
   },
 ];
+
+const PORQUE = [
+  {
+    q: "Montagem feita por quem percebe",
+    a: "Não há estagiários nem linha de produção: quem monta a sua máquina é quem a especificou e quem lhe dá suporte depois.",
+  },
+  {
+    q: "Peças originais e compatíveis",
+    a: "Trabalhamos apenas com componentes originais, verificados um a um em termos de consumo, térmica e compatibilidade.",
+  },
+  {
+    q: "Testes reais antes de sair da oficina",
+    a: "48 horas de burn-in, stress test de CPU e GPU e relatório de temperaturas entregue consigo.",
+  },
+  {
+    q: "Suporte local em Luanda",
+    a: "Garantia de 24 meses na montagem e uma pessoa com nome do outro lado do WhatsApp — sem call center.",
+  },
+];
+
 
 function Index() {
   const { data: destaques = [], isLoading } = useQuery({
@@ -170,6 +193,84 @@ function Index() {
       </section>
 
 
+      {/* Feito para si */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid items-center gap-12 lg:grid-cols-2">
+          <div className="relative">
+            <div className="overflow-hidden rounded-[20px] border border-graphite-light">
+              <img
+                src={team1.url}
+                alt="Técnico da RAFAS Gaming ao lado de um PC montado à mão"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="absolute -bottom-6 -right-2 hidden rounded-[16px] border border-graphite-light bg-graphite px-6 py-5 sm:block">
+              <p className="font-mono text-[22px] font-medium text-electric">+300</p>
+              <p className="text-[13px] text-titanium-dark">sistemas entregues</p>
+            </div>
+          </div>
+          <div>
+            <p className="eyebrow">Feito para si</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold leading-tight tracking-[-0.02em]">
+              A máquina é sua. A engenharia é nossa.
+            </h2>
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-titanium-dark">
+              Cada build RAFAS começa numa conversa e termina numa bancada de testes. Escolhe o uso,
+              nós escolhemos as peças, montamos à mão e entregamos com relatório técnico.
+            </p>
+            <ul className="mt-9 grid gap-4 sm:grid-cols-2">
+              {[
+                { icon: Cpu, t: "Especificação sob medida" },
+                { icon: Wrench, t: "Montagem manual e cablagem limpa" },
+                { icon: Gauge, t: "48h de burn-in antes da entrega" },
+                { icon: ShieldCheck, t: "Garantia local de 24 meses" },
+              ].map(({ icon: Icon, t }) => (
+                <li key={t} className="flex items-start gap-3 rounded-[12px] border border-graphite-light bg-graphite p-4">
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-electric" />
+                  <span className="text-[14px] leading-snug text-titanium">{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/loja">Montar a minha máquina</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                  <WhatsAppIcon className="mr-2 h-4 w-4" /> Falar no WhatsApp
+                </a>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Porquê escolher a RAFAS */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="eyebrow">Porquê a RAFAS</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold leading-tight tracking-[-0.02em]">
+              Porquê escolher a RAFAS Gaming?
+            </h2>
+            <p className="mt-5 max-w-lg text-[15px] leading-relaxed text-titanium-dark">
+              Quatro razões pelas quais os nossos clientes em Luanda não voltam a comprar às cegas.
+            </p>
+            <div className="mt-9">
+              <FaqAccordion items={PORQUE} />
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-[20px] border border-graphite-light">
+            <img
+              src={team2.url}
+              alt="Montagem de um PC gaming branco na bancada da RAFAS Gaming"
+              className="aspect-[4/5] w-full object-cover lg:aspect-[4/4.4]"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
 
       {/* Categorias por uso */}
       <section className="section-y border-b border-graphite-light">
@@ -188,10 +289,17 @@ function Index() {
                 className="group flex flex-col justify-between rounded-[16px] border border-graphite-light bg-graphite p-8 transition-colors hover:border-electric"
               >
                 <div>
-                  <span className="font-mono text-[12px] text-titanium-dark">
-                    0{i + 1}
-                  </span>
-                  <h3 className="mt-4 text-[24px] font-semibold">{c.nome}</h3>
+                  <div className="flex items-center justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-[12px] border border-graphite-light bg-obsidian text-electric transition-colors group-hover:border-electric">
+                      {(() => {
+                        const Icon = [Gamepad2, MonitorCog, BrainCircuit][i] ?? Cpu;
+                        return <Icon className="h-5 w-5" />;
+                      })()}
+                    </span>
+                    <span className="font-mono text-[12px] text-titanium-dark">0{i + 1}</span>
+                  </div>
+                  <h3 className="mt-5 text-[24px] font-semibold">{c.nome}</h3>
+
                   <p className="mt-3 text-[14px] leading-relaxed text-titanium-dark">
                     {c.descricao}
                   </p>
