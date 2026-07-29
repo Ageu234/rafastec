@@ -161,6 +161,7 @@ function AppShell() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
       <Toaster />
     </div>
   );
