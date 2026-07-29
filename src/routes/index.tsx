@@ -6,7 +6,10 @@ import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg.asset.json";
+import team1 from "@/assets/rafas-team-1.jpg.asset.json";
+import team2 from "@/assets/rafas-team-2.jpg.asset.json";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 
 
 export const Route = createFileRoute("/")({
@@ -83,6 +86,26 @@ const FAQ = [
     a: "Sim, com embalagem reforçada específica para transporte de sistemas montados. O prazo é confirmado no checkout.",
   },
 ];
+
+const PORQUE = [
+  {
+    q: "Montagem feita por quem percebe",
+    a: "Não há estagiários nem linha de produção: quem monta a sua máquina é quem a especificou e quem lhe dá suporte depois.",
+  },
+  {
+    q: "Peças originais e compatíveis",
+    a: "Trabalhamos apenas com componentes originais, verificados um a um em termos de consumo, térmica e compatibilidade.",
+  },
+  {
+    q: "Testes reais antes de sair da oficina",
+    a: "48 horas de burn-in, stress test de CPU e GPU e relatório de temperaturas entregue consigo.",
+  },
+  {
+    q: "Suporte local em Luanda",
+    a: "Garantia de 24 meses na montagem e uma pessoa com nome do outro lado do WhatsApp — sem call center.",
+  },
+];
+
 
 function Index() {
   const { data: destaques = [], isLoading } = useQuery({
