@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, ShieldCheck, Cpu, Wrench, Gauge, PackageCheck, HeadphonesIcon } from "lucide-react";
+import { ArrowRight, ShieldCheck, Cpu, Wrench, Gauge, PackageCheck, HeadphonesIcon, Gamepad2, MonitorCog, BrainCircuit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
