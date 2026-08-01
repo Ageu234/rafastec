@@ -20,11 +20,12 @@ export function PageHero({
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover object-center"
       />
-      <div aria-hidden className="absolute inset-0 bg-obsidian/80" />
+      <div aria-hidden className="absolute inset-0 bg-obsidian/85 lg:bg-obsidian/80" />
       <div
         aria-hidden
-        className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/80 to-obsidian/50"
+        className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian/85 lg:bg-gradient-to-r lg:from-obsidian lg:via-obsidian/80 lg:to-obsidian/50"
       />
+
       <div className="container-rafas relative flex min-h-[240px] flex-col justify-center py-14 md:min-h-[300px]">
         <h1 className="text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-tight tracking-[-0.025em]">
           {title}
