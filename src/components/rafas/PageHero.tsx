@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import hero from "@/assets/rafas-hero.jpg.asset.json";
+import hero from "@/assets/rafas-hero.jpg";
 
 type Crumb = { label: string; to?: string };
 
@@ -15,7 +15,7 @@ export function PageHero({
   return (
     <section className="relative overflow-hidden border-b border-graphite-light">
       <img
-        src={image ?? hero.url}
+        src={image ?? hero}
         alt=""
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover object-center"

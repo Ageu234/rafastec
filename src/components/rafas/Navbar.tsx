@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 import { CATEGORIAS, CATEGORIAS_POR_USO, getCategoria } from "@/lib/catalogo";
-import wordmark from "@/assets/rafas-wordmark.png.asset.json";
+import wordmark from "@/assets/rafas-wordmark.png";
 import { WHATSAPP_LINK } from "./WhatsAppButton";
 
 export function Navbar() {
@@ -119,7 +119,7 @@ export function Navbar() {
 
         {/* Center: logo */}
         <Link to="/" className="flex items-center justify-center">
-          <img src={wordmark.url} alt="RAFAS Gaming" className="h-12 w-auto md:h-[86px]" />
+          <img src={wordmark} alt="RAFAS Gaming" className="h-12 w-auto md:h-[86px]" />
         </Link>
 
         {/* Right */}

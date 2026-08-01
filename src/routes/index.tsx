@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/rafas/ProductCard";
 import { fetchProducts } from "@/lib/shopify";
 import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
-import heroImg from "@/assets/rafas-hero.jpg.asset.json";
-import team1 from "@/assets/rafas-team-1.jpg.asset.json";
-import team2 from "@/assets/rafas-team-2.jpg.asset.json";
+import heroImg from "@/assets/rafas-hero.jpg";
+import team1 from "@/assets/rafas-team-1.jpg";
+import team2 from "@/assets/rafas-team-2.jpg";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 
@@ -118,7 +118,7 @@ function Index() {
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-graphite-light">
         <img
-          src={heroImg.url}
+          src={heroImg}
           alt="Fundador da RAFAS ao lado de um sistema montado à mão"
           className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
         />
@@ -199,7 +199,7 @@ function Index() {
           <div className="relative">
             <div className="overflow-hidden rounded-[20px] border border-graphite-light">
               <img
-                src={team1.url}
+                src={team1}
                 alt="Técnico da RAFAS Gaming ao lado de um PC montado à mão"
                 className="aspect-[4/3] w-full object-cover"
                 loading="lazy"
@@ -263,7 +263,7 @@ function Index() {
           </div>
           <div className="overflow-hidden rounded-[20px] border border-graphite-light">
             <img
-              src={team2.url}
+              src={team2}
               alt="Montagem de um PC gaming branco na bancada da RAFAS Gaming"
               className="aspect-[4/5] w-full object-cover lg:aspect-[4/4.4]"
               loading="lazy"
