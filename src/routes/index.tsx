@@ -120,11 +120,15 @@ function Index() {
         <img
           src={heroImg}
           alt="Fundador da RAFAS ao lado de um sistema montado à mão"
-          className="absolute inset-0 h-full w-full object-cover object-[75%_center]"
+          className="absolute inset-0 h-full w-full object-cover object-[68%_center] lg:object-[75%_center]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/85 to-obsidian/25"
+          className="absolute inset-0 bg-obsidian/75 lg:bg-transparent"
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-b from-obsidian via-obsidian/70 to-obsidian/85 lg:bg-gradient-to-r lg:from-obsidian lg:via-obsidian/85 lg:to-obsidian/25"
         />
         <div
           aria-hidden
@@ -133,16 +137,18 @@ function Index() {
         <div className="container-rafas relative flex min-h-[70vh] flex-col justify-center py-24 lg:min-h-[80vh] lg:py-32">
           <div className="max-w-2xl">
             <p className="eyebrow reveal-line">Luanda · Angola</p>
+
             <h1 className="reveal-line mt-6 text-[clamp(2.75rem,6vw,4.75rem)] font-semibold leading-[1.03] tracking-[-0.03em]">
               Engenharia,
               <br />
               não montagem.
             </h1>
-            <p className="reveal-line mt-7 max-w-xl text-[17px] leading-relaxed text-titanium-dark">
+            <p className="reveal-line mt-7 max-w-xl text-[17px] leading-relaxed text-titanium">
               A RAFAS constrói workstations, sistemas gaming e máquinas de IA especificadas ao
               milímetro para o trabalho que tem em mãos — e entrega-lhe os dados que provam que
               funcionam.
             </p>
+
             <div className="reveal-line mt-10 flex flex-wrap gap-3">
               <Button asChild size="lg">
                 <Link to="/loja">
