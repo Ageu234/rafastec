@@ -76,7 +76,7 @@ export function Footer() {
       <div className="border-t border-graphite-light">
         <div className="container-rafas flex flex-col items-center gap-7 py-12">
           <Link to="/">
-            <img src={wordmark} alt="RAFAS Gaming" className="h-14 w-auto md:h-20" />
+            <img src={wordmark} alt="RAFAS Gaming" className="h-10 w-auto md:h-14" />
           </Link>
           <div className="flex items-center gap-3">
             {SOCIAIS.map(({ icon: Icon, href, label }) => (

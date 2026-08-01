@@ -22,7 +22,7 @@ export function Navbar() {
         </div>
       </div>
 
-      <div className="container-rafas grid h-[104px] grid-cols-[auto_1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
+      <div className="container-rafas grid h-[76px] grid-cols-[auto_1fr_auto] items-center gap-4 lg:grid-cols-[1fr_auto_1fr]">
         {/* Left: nav (desktop) / menu button (mobile) */}
         <div className="flex items-center">
           <button
@@ -119,7 +119,7 @@ export function Navbar() {
 
         {/* Center: logo */}
         <Link to="/" className="flex items-center justify-center">
-          <img src={wordmark} alt="RAFAS Gaming" className="h-12 w-auto md:h-[86px]" />
+          <img src={wordmark} alt="RAFAS Gaming" className="h-9 w-auto md:h-[52px]" />
         </Link>
 
         {/* Right */}
