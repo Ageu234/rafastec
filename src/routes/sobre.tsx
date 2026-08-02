@@ -5,6 +5,8 @@ import founder from "@/assets/rafas-founder.avif";
 import team1 from "@/assets/rafas-team-1.jpg";
 import team2 from "@/assets/rafas-team-2.jpg";
 import { PageHero } from "@/components/rafas/PageHero";
+import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+import pcsValores from "@/assets/rafas-pcs-valores.png";
 import oficinaVideo from "@/assets/rafas-oficina.mp4";
 import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
