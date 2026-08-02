@@ -181,22 +181,14 @@ function Index() {
 
       {/* Marcas parceiras */}
       <section className="border-b border-graphite-light">
-        <div className="container-rafas py-12">
-          <p className="text-center text-[13px] text-titanium-dark">
+        <div className="py-12">
+          <p className="container-rafas text-center text-[13px] text-titanium-dark">
             Trabalhamos com componentes das marcas em que confiamos
           </p>
-          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
-            {["INTEL", "AMD", "NVIDIA", "ASUS", "CORSAIR", "SAMSUNG", "MSI"].map((m) => (
-              <li
-                key={m}
-                className="font-mono text-[15px] tracking-[0.18em] text-titanium-dark/70 transition-colors hover:text-titanium"
-              >
-                {m}
-              </li>
-            ))}
-          </ul>
+          <BrandMarquee />
         </div>
       </section>
+
 
 
       {/* Feito para si */}
