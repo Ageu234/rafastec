@@ -8,6 +8,7 @@ import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg";
 import team1 from "@/assets/rafas-team-1.jpg";
 import team2 from "@/assets/rafas-team-2.jpg";
+import pcsImg from "@/assets/rafas-pcs.png";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 import { BrandMarquee } from "@/components/rafas/BrandMarquee";
@@ -336,29 +337,33 @@ function Index() {
 
       {/* Processo */}
       <section className="section-y border-b border-graphite-light">
-        <div className="container-rafas grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
+        <div className="container-rafas grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
             <p className="eyebrow">Processo</p>
             <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.75rem)] font-semibold leading-tight tracking-[-0.02em]">
               Quatro etapas, zero improviso.
             </h2>
-            <p className="mt-6 max-w-md text-[15px] leading-relaxed text-titanium-dark">
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-titanium-dark">
               Não vendemos caixas. Desenhamos uma máquina em torno de um problema concreto e
               provamos, com dados, que o resolve.
             </p>
+            <div className="mt-9">
+              <FaqAccordion
+                items={PROCESSO.map((p) => ({ q: `${p.n} — ${p.titulo}`, a: p.texto }))}
+              />
+            </div>
           </div>
-
-          <ol className="grid gap-px sm:grid-cols-2">
-            {PROCESSO.map((p) => (
-              <li key={p.n} className="rounded-[16px] border border-graphite-light bg-graphite p-7">
-                <span className="font-mono text-[13px] text-electric">{p.n}</span>
-                <h3 className="mt-3 text-[18px] font-semibold">{p.titulo}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-titanium-dark">{p.texto}</p>
-              </li>
-            ))}
-          </ol>
+          <div className="flex items-center justify-center">
+            <img
+              src={pcsImg}
+              alt="Gama de gabinetes RAFAS Gaming com painéis personalizados"
+              className="w-full max-w-[560px] object-contain"
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
+
 
       {/* Manifesto */}
       <section className="section-y border-b border-graphite-light">
