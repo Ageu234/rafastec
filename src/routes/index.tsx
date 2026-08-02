@@ -8,6 +8,7 @@ import { CATEGORIAS_POR_USO } from "@/lib/catalogo";
 import heroImg from "@/assets/rafas-hero.jpg";
 import team1 from "@/assets/rafas-team-1.jpg";
 import team2 from "@/assets/rafas-team-2.jpg";
+import pcsImg from "@/assets/rafas-pcs.png";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 import { BrandMarquee } from "@/components/rafas/BrandMarquee";
