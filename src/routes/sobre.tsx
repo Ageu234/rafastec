@@ -5,6 +5,8 @@ import founder from "@/assets/rafas-founder.avif";
 import team1 from "@/assets/rafas-team-1.jpg";
 import team2 from "@/assets/rafas-team-2.jpg";
 import { PageHero } from "@/components/rafas/PageHero";
+import { FaqAccordion } from "@/components/rafas/FaqAccordion";
+import pcsValores from "@/assets/rafas-pcs-valores.png";
 import oficinaVideo from "@/assets/rafas-oficina.mp4";
 import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
@@ -164,22 +166,25 @@ function Sobre() {
 
       {/* Valores */}
       <section className="section-y border-b border-graphite-light">
-        <div className="container-rafas">
-          <p className="eyebrow">Valores</p>
-          <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
-            O que nos guia
-          </h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {VALORES.map(({ icon: Icon, titulo, texto }) => (
-              <div key={titulo} className="rounded-[16px] border border-graphite-light bg-graphite p-7">
-                <Icon className="h-5 w-5 text-electric" />
-                <h3 className="mt-5 text-[18px] font-semibold">{titulo}</h3>
-                <p className="mt-3 text-[14px] leading-relaxed text-titanium-dark">{texto}</p>
-              </div>
-            ))}
+        <div className="container-rafas grid gap-12 lg:grid-cols-2 lg:items-center">
+          <div>
+            <p className="eyebrow">Valores</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+              O que nos guia
+            </h2>
+            <div className="mt-8">
+              <FaqAccordion items={VALORES.map((v) => ({ q: v.titulo, a: v.texto }))} />
+            </div>
           </div>
+          <img
+            src={pcsValores}
+            alt="Gabinetes gaming personalizados montados pela RAFAS Gaming"
+            className="w-full object-contain"
+            loading="lazy"
+          />
         </div>
       </section>
+
 
       {/* Contacto */}
       <section className="section-y">
