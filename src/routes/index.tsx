@@ -10,6 +10,7 @@ import team1 from "@/assets/rafas-team-1.jpg";
 import team2 from "@/assets/rafas-team-2.jpg";
 import { FaqAccordion } from "@/components/rafas/FaqAccordion";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
+import { BrandMarquee } from "@/components/rafas/BrandMarquee";
 
 
 export const Route = createFileRoute("/")({
