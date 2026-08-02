@@ -131,6 +131,37 @@ function Sobre() {
         </div>
       </section>
 
+      {/* Vídeo */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <div className="overflow-hidden rounded-[20px] border border-graphite-light bg-graphite">
+            <video
+              src={oficinaVideo}
+              poster={oficinaPoster}
+              controls
+              playsInline
+              muted
+              loop
+              preload="metadata"
+              className="aspect-video w-full object-cover"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Por dentro</p>
+            <h2 className="mt-4 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold leading-tight tracking-[-0.02em]">
+              Veja como trabalhamos
+            </h2>
+            <p className="mt-7 text-[16px] leading-relaxed text-titanium-dark">
+              Cada máquina passa pela nossa bancada em Luanda: cable management feito à mão, montagem
+              peça a peça e testes de temperatura antes de sair da oficina.
+            </p>
+            <p className="mt-5 text-[16px] leading-relaxed text-titanium-dark">
+              É este cuidado que separa uma montagem apressada de um sistema pensado para durar anos.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Valores */}
       <section className="section-y border-b border-graphite-light">
         <div className="container-rafas">
