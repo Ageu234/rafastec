@@ -10,7 +10,7 @@ import pcsValores from "@/assets/rafas-pcs-valores.png";
 import oficinaVideo from "@/assets/rafas-oficina.mp4";
 import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
-import { Testimonials } from "@/components/rafas/Testimonials";
+import { Testimonials, type Testimonial } from "@/components/rafas/Testimonials";
 
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d18aa587-1e10-464e-85d9-fe8fd8546437/id-preview-23ebf174--3ff80a93-a4e4-4ba6-8d20-77c0077e7258.lovable.app-1785165216210.png";
@@ -121,36 +121,8 @@ const VALORES = [
   { icon: HeadphonesIcon, titulo: "Suporte", texto: "Fala sempre com quem montou a sua máquina." },
 ];
 
-const DEPOIMENTOS = [
-  {
-    nome: "Nelson Cabral",
-    papel: "Streamer, Luanda",
-    estrelas: 5,
-    texto:
-      "Montaram-me um sistema para stream em 1440p e entregaram com relatório de temperaturas. Três meses depois, zero crashes e o suporte responde no mesmo dia.",
-  },
-  {
-    nome: "Aida Ferreira",
-    papel: "Editora de vídeo, Benguela",
-    estrelas: 5,
-    texto:
-      "Explicaram-me peça por peça porque cada escolha fazia sentido para render. O envio para Benguela chegou bem embalado e a máquina veio pronta a trabalhar.",
-  },
-  {
-    nome: "Eng. Paulo Mendes",
-    papel: "Estúdio de arquitectura",
-    estrelas: 5,
-    texto:
-      "Equipámos quatro postos de trabalho com a RAFAS. Factura correcta, prazos cumpridos e garantia local — para uma empresa isso vale mais que qualquer desconto.",
-  },
-  {
-    nome: "Josemar Tavares",
-    papel: "Cliente gaming",
-    estrelas: 4,
-    texto:
-      "O gabinete que queria demorou uns dias a chegar, mas avisaram-me sempre do estado da encomenda. A montagem e o cable management ficaram impecáveis.",
-  },
-];
+/** Depoimentos reais de clientes. Envie-me os textos, nomes e estrelas para os publicar aqui. */
+const DEPOIMENTOS: Testimonial[] = [];
 
 const NUMEROS = [
   { v: "+300", l: "sistemas entregues" },
