@@ -20,6 +20,23 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
     return () => window.clearInterval(id);
   }, [paused, items.length]);
 
+  if (items.length === 0) {
+    return (
+      <div className="rounded-[20px] border border-dashed border-graphite-light bg-graphite p-10 text-center">
+        <div className="flex justify-center gap-1">
+          {Array.from({ length: 5 }).map((_, s) => (
+            <Star key={s} className="h-4 w-4 text-graphite-light" aria-hidden="true" />
+          ))}
+        </div>
+        <p className="mt-5 text-[15px] font-medium">Ainda sem depoimentos publicados</p>
+        <p className="mx-auto mt-3 max-w-md text-[14px] leading-relaxed text-titanium-dark">
+          Já entregou uma máquina RAFAS? Envie-nos a sua experiência pelo WhatsApp e publicamos aqui,
+          com o seu nome e avaliação.
+        </p>
+      </div>
+    );
+  }
+
   const go = (dir: number) =>
     setIndex((i) => (i + dir + items.length) % items.length);
 

@@ -10,7 +10,7 @@ import pcsValores from "@/assets/rafas-pcs-valores.png";
 import oficinaVideo from "@/assets/rafas-oficina.mp4";
 import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
-import { Testimonials } from "@/components/rafas/Testimonials";
+import { Testimonials, type Testimonial } from "@/components/rafas/Testimonials";
 
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d18aa587-1e10-464e-85d9-fe8fd8546437/id-preview-23ebf174--3ff80a93-a4e4-4ba6-8d20-77c0077e7258.lovable.app-1785165216210.png";
