@@ -10,24 +10,104 @@ import pcsValores from "@/assets/rafas-pcs-valores.png";
 import oficinaVideo from "@/assets/rafas-oficina.mp4";
 import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
+import { Testimonials } from "@/components/rafas/Testimonials";
+
+const OG_IMAGE =
+  "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d18aa587-1e10-464e-85d9-fe8fd8546437/id-preview-23ebf174--3ff80a93-a4e4-4ba6-8d20-77c0077e7258.lovable.app-1785165216210.png";
+
+const FAQ_SOBRE = [
+  {
+    q: "Como funciona o envio e em quanto tempo recebo?",
+    a: "Em Luanda entregamos em mão em 24 a 48 horas úteis após a validação em bancada. Para as restantes províncias enviamos por transportadora parceira, com embalagem reforçada e número de seguimento, normalmente em 3 a 7 dias úteis. O custo é calculado no checkout consoante a zona.",
+  },
+  {
+    q: "Qual é a garantia das máquinas e componentes?",
+    a: "Todos os sistemas montados pela RAFAS Gaming têm 24 meses de garantia local em mão de obra e montagem; os componentes seguem a garantia do fabricante (12 a 36 meses). A garantia cobre defeitos de fabrico e falhas de funcionamento, não danos por queda, líquidos, sobretensão ou intervenções de terceiros.",
+  },
+  {
+    q: "Posso devolver ou trocar se não for o que esperava?",
+    a: "Sim. Tem 14 dias a contar da entrega para pedir devolução ou troca, desde que o produto esteja completo, sem danos e com a embalagem original. Sistemas configurados por medida podem ter uma taxa de reposição de componentes; explicamos sempre o valor antes de avançar.",
+  },
+  {
+    q: "Como abro um pedido de assistência ou garantia?",
+    a: "Fale connosco pelo WhatsApp +244 947 005 277 com o número de encomenda e uma descrição do problema. Fazemos primeiro um diagnóstico remoto; se for necessário, recolhemos a máquina em Luanda ou coordenamos o envio a partir da sua província.",
+  },
+  {
+    q: "Quais são as formas de pagamento?",
+    a: "Aceitamos transferência bancária, Multicaixa Express e pagamento com cartão no checkout. Para empresas emitimos factura com os dados fiscais e o IVA aplicável.",
+  },
+];
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
     meta: [
-      { title: "Sobre a RAFAS Gaming — Engenharia de hardware em Angola" },
+      { title: "Sobre a RAFAS Gaming — PCs montados à mão em Luanda" },
       {
         name: "description",
         content:
-          "A história, os valores e as pessoas por trás da RAFAS Gaming: precisão, transparência e performance mensurável em Luanda.",
+          "Conheça a RAFAS Gaming: oficina de Luanda que monta PCs gaming, workstations e máquinas de IA à mão, com 48h de burn-in, 24 meses de garantia e suporte directo.",
       },
-      { property: "og:title", content: "Sobre a RAFAS Gaming" },
+      {
+        name: "keywords",
+        content:
+          "RAFAS Gaming, PC gamer Angola, workstation Luanda, montagem de PC, hardware Angola",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "RAFAS Gaming" },
+      { property: "og:locale", content: "pt_AO" },
+      { property: "og:title", content: "Sobre a RAFAS Gaming — PCs montados à mão em Luanda" },
       {
         property: "og:description",
-        content: "Precisão, transparência e performance mensurável — a boutique de hardware de Luanda.",
+        content:
+          "Precisão, transparência e performance mensurável — a boutique de hardware de Luanda, com garantia local e suporte directo.",
       },
       { property: "og:url", content: "/sobre" },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:alt", content: "Equipa RAFAS Gaming na oficina em Luanda" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sobre a RAFAS Gaming — PCs montados à mão em Luanda" },
+      {
+        name: "twitter:description",
+        content:
+          "Oficina de Luanda: PCs gaming, workstations e máquinas de IA com burn-in de 48h e 24 meses de garantia.",
+      },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [{ rel: "canonical", href: "/sobre" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "AboutPage",
+              name: "Sobre a RAFAS Gaming",
+              url: "/sobre",
+              about: {
+                "@type": "LocalBusiness",
+                name: "RAFAS Gaming",
+                image: OG_IMAGE,
+                telephone: "+244947005277",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Luanda",
+                  addressCountry: "AO",
+                },
+              },
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: FAQ_SOBRE.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Sobre,
 });
@@ -39,6 +119,37 @@ const VALORES = [
   { icon: PackageCheck, titulo: "Elegância", texto: "A máquina certa é discreta, silenciosa e bem construída." },
   { icon: ShieldCheck, titulo: "Fiabilidade", texto: "Validação em bancada antes de sair da oficina." },
   { icon: HeadphonesIcon, titulo: "Suporte", texto: "Fala sempre com quem montou a sua máquina." },
+];
+
+const DEPOIMENTOS = [
+  {
+    nome: "Nelson Cabral",
+    papel: "Streamer, Luanda",
+    estrelas: 5,
+    texto:
+      "Montaram-me um sistema para stream em 1440p e entregaram com relatório de temperaturas. Três meses depois, zero crashes e o suporte responde no mesmo dia.",
+  },
+  {
+    nome: "Aida Ferreira",
+    papel: "Editora de vídeo, Benguela",
+    estrelas: 5,
+    texto:
+      "Explicaram-me peça por peça porque cada escolha fazia sentido para render. O envio para Benguela chegou bem embalado e a máquina veio pronta a trabalhar.",
+  },
+  {
+    nome: "Eng. Paulo Mendes",
+    papel: "Estúdio de arquitectura",
+    estrelas: 5,
+    texto:
+      "Equipámos quatro postos de trabalho com a RAFAS. Factura correcta, prazos cumpridos e garantia local — para uma empresa isso vale mais que qualquer desconto.",
+  },
+  {
+    nome: "Josemar Tavares",
+    papel: "Cliente gaming",
+    estrelas: 4,
+    texto:
+      "O gabinete que queria demorou uns dias a chegar, mas avisaram-me sempre do estado da encomenda. A montagem e o cable management ficaram impecáveis.",
+  },
 ];
 
 const NUMEROS = [
@@ -185,8 +296,46 @@ function Sobre() {
         </div>
       </section>
 
+      {/* Depoimentos */}
+      <section className="section-y border-b border-graphite-light bg-graphite/40">
+        <div className="container-rafas">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Depoimentos</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+              O que dizem os nossos clientes
+            </h2>
+            <p className="mt-5 text-[16px] leading-relaxed text-titanium-dark">
+              Gamers, criadores e empresas que confiaram a sua máquina à nossa bancada.
+            </p>
+          </div>
+          <div className="mt-10 max-w-3xl">
+            <Testimonials items={DEPOIMENTOS} />
+          </div>
+        </div>
+      </section>
 
-      {/* Contacto */}
+      {/* FAQ */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="eyebrow">Perguntas frequentes</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+              Envio, garantia e devoluções
+            </h2>
+            <p className="mt-5 text-[16px] leading-relaxed text-titanium-dark">
+              Tudo o que precisa de saber antes de encomendar. Se ficar alguma dúvida, fale connosco
+              pelo WhatsApp.
+            </p>
+            <Button asChild size="lg" variant="outline" className="mt-8">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <WhatsAppIcon className="mr-2 h-4 w-4" /> Tirar uma dúvida
+              </a>
+            </Button>
+          </div>
+          <FaqAccordion items={FAQ_SOBRE} />
+        </div>
+      </section>
+
       <section className="section-y">
         <div className="container-rafas grid gap-8 lg:grid-cols-2">
           <div className="rounded-[20px] border border-graphite-light bg-graphite p-9">
