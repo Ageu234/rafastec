@@ -296,8 +296,46 @@ function Sobre() {
         </div>
       </section>
 
+      {/* Depoimentos */}
+      <section className="section-y border-b border-graphite-light bg-graphite/40">
+        <div className="container-rafas">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Depoimentos</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+              O que dizem os nossos clientes
+            </h2>
+            <p className="mt-5 text-[16px] leading-relaxed text-titanium-dark">
+              Gamers, criadores e empresas que confiaram a sua máquina à nossa bancada.
+            </p>
+          </div>
+          <div className="mt-10 max-w-3xl">
+            <Testimonials items={DEPOIMENTOS} />
+          </div>
+        </div>
+      </section>
 
-      {/* Contacto */}
+      {/* FAQ */}
+      <section className="section-y border-b border-graphite-light">
+        <div className="container-rafas grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div>
+            <p className="eyebrow">Perguntas frequentes</p>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold tracking-[-0.02em]">
+              Envio, garantia e devoluções
+            </h2>
+            <p className="mt-5 text-[16px] leading-relaxed text-titanium-dark">
+              Tudo o que precisa de saber antes de encomendar. Se ficar alguma dúvida, fale connosco
+              pelo WhatsApp.
+            </p>
+            <Button asChild size="lg" variant="outline" className="mt-8">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                <WhatsAppIcon className="mr-2 h-4 w-4" /> Tirar uma dúvida
+              </a>
+            </Button>
+          </div>
+          <FaqAccordion items={FAQ_SOBRE} />
+        </div>
+      </section>
+
       <section className="section-y">
         <div className="container-rafas grid gap-8 lg:grid-cols-2">
           <div className="rounded-[20px] border border-graphite-light bg-graphite p-9">
