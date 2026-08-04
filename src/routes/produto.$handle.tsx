@@ -9,6 +9,9 @@ import { toast } from "sonner";
 import { trackAddToCart, trackViewItem } from "@/lib/analytics";
 import { useEffect } from "react";
 
+const WHATSAPP_NUMBER = "244947005277";
+
+
 export const Route = createFileRoute("/produto/$handle")({
   head: ({ params }) => ({
     meta: [
