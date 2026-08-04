@@ -12,26 +12,95 @@ import { useEffect } from "react";
 const WHATSAPP_NUMBER = "244947005277";
 
 
+const SITE = "https://rafastec.lovable.app";
+
 export const Route = createFileRoute("/produto/$handle")({
-  head: ({ params }) => ({
-    meta: [
-      { title: `Produto — RAFAS` },
-      {
-        name: "description",
-        content: "Ficha técnica completa, validação em bancada e preço em Kwanza.",
-      },
-      { property: "og:title", content: "Produto — RAFAS" },
-      {
-        property: "og:description",
-        content: "Ficha técnica completa, validação em bancada e preço em Kwanza.",
-      },
+  loader: async ({ params }) => {
+    try {
+      const res = await fetchProductByHandle(params.handle);
+      return { seo: res?.node ?? null };
+    } catch {
+      return { seo: null };
+    }
+  },
+  head: ({ params, loaderData }) => {
+    const node = loaderData?.seo as any;
+    const url = `${SITE}/produto/${params.handle}`;
+    const name = node?.title ?? "Produto";
+    const shortName =
+      name.length > 44 ? `${name.slice(0, 44).replace(/[\s—-]+\S*$/, "")}…` : name;
+    const title = `${shortName} | RAFAS Gaming`;
+
+    const raw =
+      node?.description?.replace(/\s+/g, " ").trim() ||
+      "Ficha técnica completa, validação em bancada e preço em Kwanza. Entrega em Luanda e províncias.";
+    const description = raw.length > 155 ? `${raw.slice(0, 152)}…` : raw;
+    const image: string | undefined = node?.images?.edges?.[0]?.node?.url;
+    const imageAlt: string =
+      node?.images?.edges?.[0]?.node?.altText ?? name;
+    const price = node?.priceRange?.minVariantPrice;
+
+    const meta: Array<Record<string, string>> = [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
       { property: "og:type", content: "product" },
-      { property: "og:url", content: `/produto/${params.handle}` },
-    ],
-    links: [{ rel: "canonical", href: `/produto/${params.handle}` }],
-  }),
+      { property: "og:site_name", content: "RAFAS Gaming" },
+      { property: "og:locale", content: "pt_AO" },
+      { property: "og:url", content: url },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: title },
+      { name: "twitter:description", content: description },
+    ];
+    if (image) {
+      meta.push(
+        { property: "og:image", content: image },
+        { property: "og:image:alt", content: imageAlt },
+        { name: "twitter:image", content: image },
+      );
+    }
+    if (price) {
+      meta.push(
+        { property: "product:price:amount", content: price.amount },
+        { property: "product:price:currency", content: price.currencyCode },
+      );
+    }
+
+    const scripts = node
+      ? [
+          {
+            type: "application/ld+json",
+            children: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Product",
+              name,
+              description,
+              ...(image ? { image: [image] } : {}),
+              sku: node?.variants?.edges?.[0]?.node?.sku ?? undefined,
+              brand: { "@type": "Brand", name: node?.vendor || "RAFAS Gaming" },
+              category: node?.productType || undefined,
+              offers: price
+                ? {
+                    "@type": "Offer",
+                    url,
+                    price: price.amount,
+                    priceCurrency: price.currencyCode,
+                    availability: node?.availableForSale
+                      ? "https://schema.org/InStock"
+                      : "https://schema.org/OutOfStock",
+                  }
+                : undefined,
+            }),
+          },
+        ]
+      : undefined;
+
+    return { meta, links: [{ rel: "canonical", href: url }], scripts };
+  },
   component: ProdutoPage,
 });
+
 
 function ProdutoPage() {
   const { handle } = Route.useParams();
