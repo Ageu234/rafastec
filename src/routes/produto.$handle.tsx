@@ -1,13 +1,16 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Loader2, ShieldCheck, Truck, Wrench } from "lucide-react";
+import { Loader2, MessageCircle, ShieldCheck, Truck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { fetchProductByHandle, formatMoney } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { trackAddToCart, trackViewItem } from "@/lib/analytics";
 import { useEffect } from "react";
+
+const WHATSAPP_NUMBER = "244947005277";
+
 
 export const Route = createFileRoute("/produto/$handle")({
   head: ({ params }) => ({
@@ -111,6 +114,31 @@ function ProdutoPage() {
     toast.success("Adicionado ao carrinho", { description: p.title, position: "top-center" });
   };
 
+  const handleBuyNow = async () => {
+    if (!variant) return;
+    await handleAddToCart();
+    const checkoutUrl = useCartStore.getState().getCheckoutUrl();
+    if (checkoutUrl) {
+      window.open(checkoutUrl, "_blank");
+    } else {
+      toast.error("Não foi possível abrir o checkout", {
+        description: "Tente novamente ou encomende pelo WhatsApp.",
+        position: "top-center",
+      });
+    }
+  };
+
+  const handleOrderNow = () => {
+    const linha = `${p.title}${variant && variants.length > 1 ? ` (${variant.title})` : ""}`;
+    const texto = `Olá RAFAS! Quero encomendar:\n\n• ${linha}\n• Preço: ${formatMoney(price.amount, price.currencyCode)}\n\nPodem confirmar disponibilidade e prazo de entrega?`;
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
+
   return (
     <div className="container-rafas section-y">
       <nav className="font-mono text-[12px] text-titanium-dark">
@@ -194,11 +222,28 @@ function ProdutoPage() {
             </div>
           )}
 
-          <div className="mt-9">
-            <Button size="lg" className="w-full sm:w-auto" onClick={handleAddToCart} disabled={isAdding || !variant}>
-              {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : "Adicionar ao carrinho"}
+          <div className="mt-9 grid gap-3 sm:grid-cols-2">
+            <Button size="lg" onClick={handleBuyNow} disabled={isAdding || !variant}>
+              {isAdding ? <Loader2 className="h-4 w-4 animate-spin" /> : "Comprar agora"}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={handleOrderNow}
+              className="border-graphite-light hover:border-electric hover:text-electric"
+            >
+              <MessageCircle className="mr-2 h-4 w-4" /> Encomendar agora
             </Button>
           </div>
+          <button
+            type="button"
+            onClick={handleAddToCart}
+            disabled={isAdding || !variant}
+            className="mt-4 text-[13px] text-titanium-dark underline underline-offset-4 transition-colors hover:text-electric disabled:opacity-50"
+          >
+            Adicionar ao carrinho
+          </button>
+
 
           <ul className="mt-10 space-y-4 border-t border-graphite-light pt-8 text-[14px] text-titanium-dark">
             <li className="flex items-center gap-3">
