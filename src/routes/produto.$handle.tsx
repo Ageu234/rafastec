@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { Loader2, ShieldCheck, Truck, Wrench } from "lucide-react";
+import { Loader2, MessageCircle, ShieldCheck, Truck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { fetchProductByHandle, formatMoney } from "@/lib/shopify";
 import { useCartStore } from "@/stores/cartStore";
