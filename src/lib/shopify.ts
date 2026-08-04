@@ -50,6 +50,8 @@ const PRODUCT_FIELDS = `
       node {
         id
         title
+        sku
+
         price { amount currencyCode }
         availableForSale
         selectedOptions { name value }
