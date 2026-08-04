@@ -27,7 +27,10 @@ export const Route = createFileRoute("/produto/$handle")({
     const node = loaderData?.seo as any;
     const url = `${SITE}/produto/${params.handle}`;
     const name = node?.title ?? "Produto";
-    const title = `${name} — RAFAS Gaming`.slice(0, 65);
+    const shortName =
+      name.length > 44 ? `${name.slice(0, 44).replace(/[\s—-]+\S*$/, "")}…` : name;
+    const title = `${shortName} | RAFAS Gaming`;
+
     const raw =
       node?.description?.replace(/\s+/g, " ").trim() ||
       "Ficha técnica completa, validação em bancada e preço em Kwanza. Entrega em Luanda e províncias.";
