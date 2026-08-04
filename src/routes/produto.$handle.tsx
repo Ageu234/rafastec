@@ -111,6 +111,31 @@ function ProdutoPage() {
     toast.success("Adicionado ao carrinho", { description: p.title, position: "top-center" });
   };
 
+  const handleBuyNow = async () => {
+    if (!variant) return;
+    await handleAddToCart();
+    const checkoutUrl = useCartStore.getState().getCheckoutUrl();
+    if (checkoutUrl) {
+      window.open(checkoutUrl, "_blank");
+    } else {
+      toast.error("Não foi possível abrir o checkout", {
+        description: "Tente novamente ou encomende pelo WhatsApp.",
+        position: "top-center",
+      });
+    }
+  };
+
+  const handleOrderNow = () => {
+    const linha = `${p.title}${variant && variants.length > 1 ? ` (${variant.title})` : ""}`;
+    const texto = `Olá RAFAS! Quero encomendar:\n\n• ${linha}\n• Preço: ${formatMoney(price.amount, price.currencyCode)}\n\nPodem confirmar disponibilidade e prazo de entrega?`;
+    window.open(
+      `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
+
   return (
     <div className="container-rafas section-y">
       <nav className="font-mono text-[12px] text-titanium-dark">
