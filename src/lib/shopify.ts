@@ -131,3 +131,38 @@ export function formatMoney(amount: string | number, currencyCode = "AOA") {
     return `${currencyCode} ${value.toFixed(0)}`;
   }
 }
+
+/* ---------- Imagens responsivas (Shopify CDN) ---------- */
+
+const IMG_WIDTHS = [320, 480, 640, 828, 1080, 1400];
+
+/** Aplica transformações do CDN da Shopify (largura + formato). */
+export function shopifyImageUrl(
+  url: string,
+  opts: { width?: number; format?: "webp" | "avif" | "jpg" } = {},
+) {
+  try {
+    const u = new URL(url);
+    if (!u.hostname.includes("shopify")) return url;
+    if (opts.width) u.searchParams.set("width", String(opts.width));
+    if (opts.format) u.searchParams.set("format", opts.format);
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
+/** Gera um srcset para as larguras padrão, opcionalmente num formato moderno. */
+export function shopifyImageSrcSet(
+  url: string,
+  format?: "webp" | "avif",
+  widths: number[] = IMG_WIDTHS,
+) {
+  try {
+    const u = new URL(url);
+    if (!u.hostname.includes("shopify")) return undefined;
+  } catch {
+    return undefined;
+  }
+  return widths.map((w) => `${shopifyImageUrl(url, { width: w, format })} ${w}w`).join(", ");
+}

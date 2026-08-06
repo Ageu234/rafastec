@@ -3,7 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { Loader2, MessageCircle, ShieldCheck, Truck, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { fetchProductByHandle, formatMoney } from "@/lib/shopify";
+import {
+  fetchProductByHandle,
+  formatMoney,
+  shopifyImageSrcSet,
+  shopifyImageUrl,
+} from "@/lib/shopify";
+
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
 import { trackAddToCart, trackViewItem } from "@/lib/analytics";
@@ -13,6 +19,9 @@ const WHATSAPP_NUMBER = "244947005277";
 
 
 const SITE = "https://rafastec.lovable.app";
+
+const IMAGE_SIZES = "(max-width: 1024px) 100vw, 560px";
+
 
 export const Route = createFileRoute("/produto/$handle")({
   loader: async ({ params }) => {
@@ -112,13 +121,17 @@ export const Route = createFileRoute("/produto/$handle")({
 
     const links: Array<Record<string, string>> = [{ rel: "canonical", href: url }];
     if (image) {
+      const avifSrcSet = shopifyImageSrcSet(image, "avif");
       links.push({
         rel: "preload",
         as: "image",
-        href: image,
+        type: "image/avif",
+        href: shopifyImageUrl(image, { width: 1080, format: "avif" }),
+        ...(avifSrcSet ? { imagesrcset: avifSrcSet, imagesizes: IMAGE_SIZES } : {}),
         fetchpriority: "high",
       });
     }
+
 
     return { meta, links, scripts };
   },
@@ -249,14 +262,30 @@ function ProdutoPage() {
         <div>
           <div className="aspect-4/3 overflow-hidden rounded-[16px] border border-graphite-light bg-graphite">
             {images[imageIndex] ? (
-              <img
-                src={images[imageIndex].url}
-                alt={images[imageIndex].altText ?? p.title}
-                loading={imageIndex === 0 ? "eager" : "lazy"}
-                fetchPriority={imageIndex === 0 ? "high" : "auto"}
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
+              <picture>
+                <source
+                  type="image/avif"
+                  srcSet={shopifyImageSrcSet(images[imageIndex].url, "avif")}
+                  sizes={IMAGE_SIZES}
+                />
+                <source
+                  type="image/webp"
+                  srcSet={shopifyImageSrcSet(images[imageIndex].url, "webp")}
+                  sizes={IMAGE_SIZES}
+                />
+                <img
+                  src={shopifyImageUrl(images[imageIndex].url, { width: 1080 })}
+                  srcSet={shopifyImageSrcSet(images[imageIndex].url)}
+                  sizes={IMAGE_SIZES}
+                  alt={images[imageIndex].altText ?? p.title}
+                  width={1080}
+                  height={810}
+                  loading={imageIndex === 0 ? "eager" : "lazy"}
+                  fetchPriority={imageIndex === 0 ? "high" : "auto"}
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </picture>
             ) : (
               <div className="flex h-full items-center justify-center font-mono text-xs text-titanium-dark">
                 SEM IMAGEM
@@ -273,11 +302,20 @@ function ProdutoPage() {
                     i === imageIndex ? "border-electric" : "border-graphite-light"
                   }`}
                 >
-                  <img src={img.url} alt="" className="h-full w-full object-cover" />
+                  <img
+                    src={shopifyImageUrl(img.url, { width: 160, format: "webp" })}
+                    alt=""
+                    width={80}
+                    height={80}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
                 </button>
               ))}
             </div>
           )}
+
         </div>
 
         <div>
