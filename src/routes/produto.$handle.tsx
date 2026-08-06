@@ -67,6 +67,19 @@ export const Route = createFileRoute("/produto/$handle")({
       );
     }
 
+    const breadcrumb = {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: SITE },
+          { "@type": "ListItem", position: 2, name: "Loja", item: `${SITE}/loja` },
+          { "@type": "ListItem", position: 3, name, item: url },
+        ],
+      }),
+    };
+
     const scripts = node
       ? [
           {
@@ -93,10 +106,21 @@ export const Route = createFileRoute("/produto/$handle")({
                 : undefined,
             }),
           },
+          breadcrumb,
         ]
-      : undefined;
+      : [breadcrumb];
 
-    return { meta, links: [{ rel: "canonical", href: url }], scripts };
+    const links: Array<Record<string, string>> = [{ rel: "canonical", href: url }];
+    if (image) {
+      links.push({
+        rel: "preload",
+        as: "image",
+        href: image,
+        fetchpriority: "high",
+      });
+    }
+
+    return { meta, links, scripts };
   },
   component: ProdutoPage,
 });
