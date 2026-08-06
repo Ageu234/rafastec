@@ -12,8 +12,11 @@ import oficinaPoster from "@/assets/rafas-oficina-poster.jpg";
 import { WHATSAPP_LINK, WhatsAppIcon } from "@/components/rafas/WhatsAppButton";
 import { Testimonials, type Testimonial } from "@/components/rafas/Testimonials";
 
+const SITE = "https://rafastec.lovable.app";
+
 const OG_IMAGE =
   "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/d18aa587-1e10-464e-85d9-fe8fd8546437/id-preview-23ebf174--3ff80a93-a4e4-4ba6-8d20-77c0077e7258.lovable.app-1785165216210.png";
+
 
 const FAQ_SOBRE = [
   {
@@ -104,7 +107,24 @@ export const Route = createFileRoute("/sobre")({
                 acceptedAnswer: { "@type": "Answer", text: f.a },
               })),
             },
+            {
+              "@type": "VideoObject",
+              name: "Por dentro da oficina RAFAS Gaming em Luanda",
+              description:
+                "Veja como cada máquina RAFAS Gaming é montada à mão na nossa bancada em Luanda: cable management, montagem peça a peça e testes de temperatura antes da entrega.",
+              thumbnailUrl: [`${SITE}${oficinaPoster}`],
+              contentUrl: `${SITE}${oficinaVideo}`,
+              uploadDate: "2026-08-02T00:00:00+01:00",
+              inLanguage: "pt-AO",
+              isFamilyFriendly: true,
+              publisher: {
+                "@type": "Organization",
+                name: "RAFAS Gaming",
+                logo: { "@type": "ImageObject", url: OG_IMAGE },
+              },
+            },
           ],
+
         }),
       },
     ],
