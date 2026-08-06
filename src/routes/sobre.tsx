@@ -218,17 +218,17 @@ function Sobre() {
 
       {/* Vídeo */}
       <section className="section-y border-b border-graphite-light">
-        <div className="container-rafas grid gap-14 lg:grid-cols-[1.15fr_1fr] lg:items-center">
-          <div className="overflow-hidden rounded-[20px] border border-graphite-light bg-graphite">
+        <div className="container-rafas grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div className="mx-auto aspect-square w-full max-w-[560px] overflow-hidden rounded-[20px] border border-graphite-light bg-graphite">
             <video
               src={oficinaVideo}
               poster={oficinaPoster}
-              controls
+              autoPlay
               playsInline
               muted
               loop
-              preload="metadata"
-              className="aspect-video w-full object-cover"
+              preload="auto"
+              className="h-full w-full object-cover"
             />
           </div>
           <div>

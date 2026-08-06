@@ -67,6 +67,19 @@ export const Route = createFileRoute("/produto/$handle")({
       );
     }
 
+    const breadcrumb = {
+      type: "application/ld+json",
+      children: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Início", item: SITE },
+          { "@type": "ListItem", position: 2, name: "Loja", item: `${SITE}/loja` },
+          { "@type": "ListItem", position: 3, name, item: url },
+        ],
+      }),
+    };
+
     const scripts = node
       ? [
           {
@@ -93,10 +106,21 @@ export const Route = createFileRoute("/produto/$handle")({
                 : undefined,
             }),
           },
+          breadcrumb,
         ]
-      : undefined;
+      : [breadcrumb];
 
-    return { meta, links: [{ rel: "canonical", href: url }], scripts };
+    const links: Array<Record<string, string>> = [{ rel: "canonical", href: url }];
+    if (image) {
+      links.push({
+        rel: "preload",
+        as: "image",
+        href: image,
+        fetchpriority: "high",
+      });
+    }
+
+    return { meta, links, scripts };
   },
   component: ProdutoPage,
 });
@@ -228,6 +252,9 @@ function ProdutoPage() {
               <img
                 src={images[imageIndex].url}
                 alt={images[imageIndex].altText ?? p.title}
+                loading={imageIndex === 0 ? "eager" : "lazy"}
+                fetchPriority={imageIndex === 0 ? "high" : "auto"}
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             ) : (
