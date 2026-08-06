@@ -252,6 +252,9 @@ function ProdutoPage() {
               <img
                 src={images[imageIndex].url}
                 alt={images[imageIndex].altText ?? p.title}
+                loading={imageIndex === 0 ? "eager" : "lazy"}
+                fetchPriority={imageIndex === 0 ? "high" : "auto"}
+                decoding="async"
                 className="h-full w-full object-cover"
               />
             ) : (
