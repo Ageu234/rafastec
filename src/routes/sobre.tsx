@@ -218,7 +218,7 @@ function Sobre() {
 
       {/* Vídeo */}
       <section className="section-y border-b border-graphite-light">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div className="container-rafas grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="mx-auto aspect-square w-full max-w-[560px] overflow-hidden rounded-[20px] border border-graphite-light bg-graphite">
             <video
               src={oficinaVideo}
