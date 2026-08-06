@@ -121,13 +121,17 @@ export const Route = createFileRoute("/produto/$handle")({
 
     const links: Array<Record<string, string>> = [{ rel: "canonical", href: url }];
     if (image) {
+      const avifSrcSet = shopifyImageSrcSet(image, "avif");
       links.push({
         rel: "preload",
         as: "image",
-        href: image,
+        type: "image/avif",
+        href: shopifyImageUrl(image, { width: 1080, format: "avif" }),
+        ...(avifSrcSet ? { imagesrcset: avifSrcSet, imagesizes: IMAGE_SIZES } : {}),
         fetchpriority: "high",
       });
     }
+
 
     return { meta, links, scripts };
   },
