@@ -35,6 +35,24 @@ export const CATEGORIAS: Categoria[] = [
     query: t("perifericos", "Periféricos"),
   },
   {
+    slug: "monitores",
+    nome: "Monitores",
+    descricao: "Imagem fiel, taxa de atualização alta e cores calibradas.",
+    query: t("monitores", "Monitores"),
+  },
+  {
+    slug: "cadeiras-gamers",
+    nome: "Cadeiras Gamers",
+    descricao: "Ergonomia para sessões longas, sem comprometer a postura.",
+    query: t("cadeiras-gamers", "Cadeiras Gamers"),
+  },
+  {
+    slug: "mesas",
+    nome: "Mesas",
+    descricao: "Superfícies estáveis e organizadas para o seu setup.",
+    query: t("mesas", "Mesas"),
+  },
+  {
     slug: "componentes",
     nome: "Componentes",
     descricao: "Acesso directo ao catálogo, para quem já sabe o que procura.",
