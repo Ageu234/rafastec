@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Youtube, Phone, MapPin, Mail } from "lucide-react";
 import { CATEGORIAS, getCategoria } from "@/lib/catalogo";
 import wordmark from "@/assets/rafas-wordmark.png";
 import { WHATSAPP_LINK, WhatsAppIcon } from "./WhatsAppButton";
