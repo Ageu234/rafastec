@@ -84,6 +84,21 @@ export function Navbar() {
                           </Link>
                         </li>
                         <li>
+                          <Link to="/loja/$categoria" params={{ categoria: "monitores" }} className="hover:text-electric">
+                            Monitores
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/loja/$categoria" params={{ categoria: "cadeiras-gamers" }} className="hover:text-electric">
+                            Cadeiras Gamers
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/loja/$categoria" params={{ categoria: "mesas" }} className="hover:text-electric">
+                            Mesas
+                          </Link>
+                        </li>
+                        <li>
                           <Link to="/processo" className="hover:text-electric">
                             Montagem RAFAS
                           </Link>
