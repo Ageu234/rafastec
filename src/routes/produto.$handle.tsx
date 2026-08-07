@@ -46,7 +46,11 @@ export const Route = createFileRoute("/produto/$handle")({
       node?.description?.replace(/\s+/g, " ").trim() ||
       "Ficha técnica completa, validação em bancada e preço em Kwanza. Entrega em Luanda e províncias.";
     const description = raw.length > 155 ? `${raw.slice(0, 152)}…` : raw;
-    const image: string | undefined = node?.images?.edges?.[0]?.node?.url;
+    const allImages: string[] = (node?.images?.edges ?? [])
+      .map((e: any) => e?.node?.url)
+      .filter(Boolean);
+    const image: string | undefined = allImages[0];
+
     const imageAlt: string =
       node?.images?.edges?.[0]?.node?.altText ?? name;
     const price = node?.priceRange?.minVariantPrice;
