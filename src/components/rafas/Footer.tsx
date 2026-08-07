@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, Youtube, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Youtube, Phone, MapPin, Mail } from "lucide-react";
 import { CATEGORIAS, getCategoria } from "@/lib/catalogo";
 import wordmark from "@/assets/rafas-wordmark.png";
 import { WHATSAPP_LINK, WhatsAppIcon } from "./WhatsAppButton";
@@ -58,6 +58,10 @@ export function Footer() {
             <li className="flex items-center gap-3">
               <Phone className="h-4 w-4 shrink-0 text-electric" />
               <a href="tel:+244947005277" className="hover:text-electric">+244 947 005 277</a>
+            </li>
+            <li className="flex items-center gap-3">
+              <Mail className="h-4 w-4 shrink-0 text-electric" />
+              <a href="mailto:rafasgaming@proton.me" className="hover:text-electric">rafasgaming@proton.me</a>
             </li>
             <li className="flex items-center gap-3">
               <WhatsAppIcon className="h-4 w-4 shrink-0 text-electric" />

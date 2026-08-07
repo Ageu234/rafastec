@@ -58,10 +58,16 @@ function Contacto() {
               <MapPin className="h-4 w-4 text-electric" /> Luanda, Angola
             </li>
             <li className="flex items-center gap-3">
-              <Mail className="h-4 w-4 text-electric" /> geral@rafas.ao
+              <Mail className="h-4 w-4 shrink-0 text-electric" />
+              <a href="mailto:rafasgaming@proton.me" className="hover:text-electric">
+                rafasgaming@proton.me
+              </a>
             </li>
             <li className="flex items-center gap-3">
-              <Phone className="h-4 w-4 text-electric" /> +244 900 000 000
+              <Phone className="h-4 w-4 shrink-0 text-electric" />
+              <a href="tel:+244947005277" className="hover:text-electric">
+                +244 947 005 277
+              </a>
             </li>
           </ul>
         </div>
