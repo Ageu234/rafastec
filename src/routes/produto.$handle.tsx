@@ -260,63 +260,9 @@ function ProdutoPage() {
 
       <div className="mt-8 grid gap-14 lg:grid-cols-2">
         <div>
-          <div className="aspect-4/3 overflow-hidden rounded-[16px] border border-graphite-light bg-graphite">
-            {images[imageIndex] ? (
-              <picture>
-                <source
-                  type="image/avif"
-                  srcSet={shopifyImageSrcSet(images[imageIndex].url, "avif")}
-                  sizes={IMAGE_SIZES}
-                />
-                <source
-                  type="image/webp"
-                  srcSet={shopifyImageSrcSet(images[imageIndex].url, "webp")}
-                  sizes={IMAGE_SIZES}
-                />
-                <img
-                  src={shopifyImageUrl(images[imageIndex].url, { width: 1080 })}
-                  srcSet={shopifyImageSrcSet(images[imageIndex].url)}
-                  sizes={IMAGE_SIZES}
-                  alt={images[imageIndex].altText ?? p.title}
-                  width={1080}
-                  height={810}
-                  loading={imageIndex === 0 ? "eager" : "lazy"}
-                  fetchPriority={imageIndex === 0 ? "high" : "auto"}
-                  decoding="async"
-                  className="h-full w-full object-cover"
-                />
-              </picture>
-            ) : (
-              <div className="flex h-full items-center justify-center font-mono text-xs text-titanium-dark">
-                SEM IMAGEM
-              </div>
-            )}
-          </div>
-          {images.length > 1 && (
-            <div className="mt-4 flex gap-3">
-              {images.map((img, i) => (
-                <button
-                  key={img.url}
-                  onClick={() => setImageIndex(i)}
-                  className={`h-20 w-20 overflow-hidden rounded-[10px] border ${
-                    i === imageIndex ? "border-electric" : "border-graphite-light"
-                  }`}
-                >
-                  <img
-                    src={shopifyImageUrl(img.url, { width: 160, format: "webp" })}
-                    alt=""
-                    width={80}
-                    height={80}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          )}
-
+          <ProductGallery images={images} title={p.title} />
         </div>
+
 
         <div>
           {p.productType && <p className="eyebrow">{p.productType}</p>}
