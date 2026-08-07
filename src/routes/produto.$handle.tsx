@@ -100,7 +100,7 @@ export const Route = createFileRoute("/produto/$handle")({
               "@type": "Product",
               name,
               description,
-              ...(image ? { image: [image] } : {}),
+              ...(allImages.length ? { image: allImages } : {}),
               sku: node?.variants?.edges?.[0]?.node?.sku ?? undefined,
               brand: { "@type": "Brand", name: node?.vendor || "RAFAS Gaming" },
               category: node?.productType || undefined,
