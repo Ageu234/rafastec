@@ -10,7 +10,9 @@ import {
   shopifyImageUrl,
 } from "@/lib/shopify";
 
+import { ProductGallery } from "@/components/rafas/ProductGallery";
 import { useCartStore } from "@/stores/cartStore";
+
 import { toast } from "sonner";
 import { trackAddToCart, trackViewItem } from "@/lib/analytics";
 import { useEffect } from "react";
