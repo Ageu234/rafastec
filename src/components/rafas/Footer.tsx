@@ -60,6 +60,10 @@ export function Footer() {
               <a href="tel:+244947005277" className="hover:text-electric">+244 947 005 277</a>
             </li>
             <li className="flex items-center gap-3">
+              <Mail className="h-4 w-4 shrink-0 text-electric" />
+              <a href="mailto:rafasgaming@proton.me" className="hover:text-electric">rafasgaming@proton.me</a>
+            </li>
+            <li className="flex items-center gap-3">
               <WhatsAppIcon className="h-4 w-4 shrink-0 text-electric" />
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="hover:text-electric">
                 WhatsApp directo
